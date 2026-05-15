@@ -1,0 +1,75 @@
+/* ─── Reset ─────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: #f7f9f5;
+  color: #1a2e1a;
+  -webkit-font-smoothing: antialiased;
+}
+img { display: block; max-width: 100%; }
+button { cursor: pointer; font-family: inherit; }
+input, textarea, select { font-family: inherit; outline: none; }
+a { text-decoration: none; color: inherit; }
+
+/* ─── CSS Variables ──────────────────────── */
+:root {
+  --green:        #1a6b3a;
+  --green-dark:   #145530;
+  --green-mid:    #2d9d5c;
+  --green-light:  #e6f4ec;
+  --green-border: #b8dfc8;
+  --bg:           #f7f9f5;
+  --bg-warm:      #faf8f4;
+  --card:         #ffffff;
+  --border:       #e8ede8;
+  --text:         #1a2e1a;
+  --text-muted:   #6b7280;
+  --text-faint:   #9ca3af;
+  --red:          #ef4444;
+  --amber:        #f59e0b;
+  --blue:         #3b82f6;
+  --radius-sm:    8px;
+  --radius-md:    12px;
+  --radius-lg:    16px;
+  --radius-xl:    24px;
+  --shadow-sm:    0 1px 4px rgba(0,0,0,0.06);
+  --shadow-md:    0 4px 20px rgba(0,0,0,0.08);
+  --shadow-lg:    0 8px 40px rgba(0,0,0,0.12);
+}
+
+/* ─── Scrollbar ──────────────────────────── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--green-light); }
+::-webkit-scrollbar-thumb { background: var(--green); border-radius: 4px; }
+
+/* ─── Animations ─────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.5; }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-8px); }
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.fade-up   { animation: fadeUp 0.5s ease forwards; }
+.fade-in   { animation: fadeIn 0.3s ease forwards; }
+.pulse     { animation: pulse 2s infinite; }
+.float     { animation: float 3s ease-in-out infinite; }
+
+/* ─── Utility ────────────────────────────── */
+.truncate      { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.line-clamp-2  { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.line-clamp-3  { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }

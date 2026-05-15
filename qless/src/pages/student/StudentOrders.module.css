@@ -1,0 +1,31 @@
+.page { background:var(--bg); min-height:calc(100vh - 58px); padding:32px; }
+.inner { max-width:980px; margin:0 auto; }
+.title { font-family:'DM Serif Display',serif; font-size:32px; color:var(--text); margin-bottom:4px; }
+.sub { font-size:13px; color:var(--text-faint); margin-bottom:28px; }
+.layout { display:flex; gap:24px; }
+.sidebar { width:200px; flex-shrink:0; display:flex; flex-direction:column; gap:12px; }
+.sideCard { background:#fff; border:1px solid var(--border); border-radius:var(--radius-md); padding:16px; }
+.sideLabel { font-size:10px; font-weight:700; color:var(--text-faint); letter-spacing:.08em; margin-bottom:12px; }
+.sideRow { display:flex; justify-content:space-between; align-items:center; padding:8px 0; border-bottom:1px solid var(--border); font-size:13px; color:var(--text-muted); }
+.activeBadge { background:var(--green); color:#fff; border-radius:20px; padding:1px 8px; font-size:11px; font-weight:700; }
+.mutedNum { font-size:13px; color:var(--text-faint); font-weight:700; }
+.filterGroup { display:flex; flex-wrap:wrap; gap:6px; }
+.filterBtn { background:var(--green-light); color:var(--green); border:1px solid var(--green-border); border-radius:20px; padding:4px 12px; font-size:11px; font-weight:700; cursor:pointer; font-family:'DM Sans',sans-serif; }
+.filterActive { background:var(--green); color:#fff; border:1px solid var(--green); border-radius:20px; padding:4px 12px; font-size:11px; font-weight:700; cursor:pointer; font-family:'DM Sans',sans-serif; }
+.list { flex:1; display:flex; flex-direction:column; gap:12px; }
+.orderCard { background:#fff; border:1px solid var(--border); border-radius:var(--radius-lg); display:flex; align-items:center; gap:16px; padding:18px; transition:box-shadow .2s; }
+.orderCard:hover { box-shadow:var(--shadow-md); }
+.orderImg { width:90px; height:78px; border-radius:12px; object-fit:cover; flex-shrink:0; }
+.orderInfo { flex:1; }
+.orderMeta { display:flex; align-items:center; gap:8px; margin-bottom:4px; }
+.orderId { font-size:11px; color:var(--text-faint); font-family:monospace; }
+.statusBadge { border-radius:20px; padding:2px 8px; font-size:10px; font-weight:700; }
+.orderName { font-family:'DM Serif Display',serif; font-size:16px; color:var(--text); margin-bottom:2px; }
+.orderDesc { font-size:12px; color:var(--text-faint); margin-bottom:10px; }
+.orderActions { display:flex; gap:8px; }
+.reorderBtn { background:var(--green); color:#fff; border:none; border-radius:8px; padding:6px 14px; font-size:12px; font-weight:700; cursor:pointer; font-family:'DM Sans',sans-serif; transition:background .2s; }
+.reorderBtn:hover { background:var(--green-dark); }
+.detailBtn { background:var(--green-light); color:var(--green); border:1px solid var(--green-border); border-radius:8px; padding:6px 14px; font-size:12px; font-weight:700; cursor:pointer; font-family:'DM Sans',sans-serif; }
+.orderRight { text-align:right; flex-shrink:0; }
+.orderPrice { font-family:'DM Serif Display',serif; font-size:20px; color:var(--green); font-weight:700; }
+.orderTime { font-size:11px; color:var(--text-faint); margin-top:4px; }

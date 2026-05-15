@@ -1,0 +1,31 @@
+.page { padding:28px 32px; background:var(--bg-warm); min-height:100vh; }
+.title { font-family:'DM Serif Display',serif; font-size:24px; color:var(--text); margin-bottom:4px; }
+.sub { font-size:13px; color:var(--text-faint); margin-bottom:28px; }
+.kpiGrid { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-bottom:20px; }
+.kpiCard { background:#fff; border:1px solid var(--border); border-radius:var(--radius-lg); padding:18px; }
+.kpiLabel { font-size:10px; font-weight:700; color:var(--text-faint); letter-spacing:.07em; margin-bottom:10px; }
+.kpiRow { display:flex; align-items:baseline; gap:10px; }
+.kpiVal { font-family:'DM Serif Display',serif; font-size:24px; color:var(--text); }
+.kpiChip { font-size:11px; font-weight:700; padding:2px 8px; border-radius:20px; }
+.row { display:grid; grid-template-columns:3fr 2fr; gap:16px; margin-bottom:16px; }
+.chartCard { background:#fff; border:1px solid var(--border); border-radius:var(--radius-lg); padding:24px; }
+.cardTitle { font-family:'DM Serif Display',serif; font-size:17px; color:var(--text); }
+.bars { display:flex; align-items:flex-end; gap:10px; height:180px; margin-top:20px; }
+.barCol { display:flex; flex-direction:column; align-items:center; gap:4px; flex:1; }
+.barVal { font-size:10px; color:var(--green); font-weight:700; }
+.bar { background:linear-gradient(to top,var(--green),#4ade80); border-radius:4px 4px 0 0; width:100%; min-height:8px; }
+.barDay { font-size:11px; color:var(--text-faint); }
+.barOrders { font-size:10px; color:var(--text-faint); }
+.breakCard { background:#fff; border:1px solid var(--border); border-radius:var(--radius-lg); padding:24px; }
+.catRow { margin-bottom:16px; }
+.catMeta { display:flex; justify-content:space-between; font-size:13px; color:var(--text-muted); margin-bottom:6px; }
+.catPct { font-weight:700; }
+.progressBg { background:var(--green-light); border-radius:6px; height:10px; overflow:hidden; }
+.progressFill { height:100%; border-radius:6px; transition:width 1s ease; }
+.peakCard { background:#fff; border:1px solid var(--border); border-radius:var(--radius-lg); padding:24px; }
+.peakGrid { display:flex; align-items:flex-end; gap:12px; height:130px; }
+.peakCol { display:flex; flex-direction:column; align-items:center; gap:4px; flex:1; }
+.peakBar { width:100%; border-radius:4px 4px 0 0; min-height:6px; transition:height .5s ease; }
+.peakLabel { font-size:10px; color:var(--text-faint); }
+.legend { display:flex; align-items:center; gap:4px; margin-top:16px; font-size:12px; color:var(--text-muted); }
+.dot { width:10px; height:10px; border-radius:50%; display:inline-block; }

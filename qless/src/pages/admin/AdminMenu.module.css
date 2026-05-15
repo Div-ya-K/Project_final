@@ -1,0 +1,66 @@
+.page { background: #faf8f4; min-height: 100vh; display: flex; position: relative; }
+.main { flex: 1; padding: 28px 32px; }
+.searchRow { display: flex; align-items: center; gap: 8px; background: #fff; border: 1px solid #e8ede8; border-radius: 10px; padding: 10px 16px; max-width: 340px; margin-bottom: 20px; }
+.searchRow input { flex: 1; border: none; outline: none; font-size: 13px; color: #374151; background: transparent; font-family: 'DM Sans', sans-serif; }
+.searchRow input::placeholder { color: #9ca3af; }
+.header { margin-bottom: 20px; }
+.title { font-family: 'DM Serif Display', serif; font-size: 28px; color: #1a2e1a; margin-bottom: 4px; }
+.sub { font-size: 13px; color: #9ca3af; }
+.tabs { display: flex; gap: 8px; margin-bottom: 24px; }
+.tab { background: #fff; border: 1px solid #e8ede8; border-radius: 30px; padding: 8px 20px; font-size: 13px; font-weight: 500; color: #6b7280; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: all 0.15s; }
+.tab:hover { border-color: #1a6b3a; color: #1a6b3a; }
+.tabActive { background: #1a2e1a; border: 1px solid #1a2e1a; border-radius: 30px; padding: 8px 20px; font-size: 13px; font-weight: 700; color: #fff; cursor: pointer; font-family: 'DM Sans', sans-serif; }
+.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 80px; }
+.card { background: #fff; border: 1px solid #e8ede8; border-radius: 14px; overflow: hidden; transition: box-shadow 0.2s; }
+.card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+.unavailable { opacity: 0.55; }
+.cardImg { position: relative; overflow: hidden; }
+.cardImg img { width: 100%; height: 180px; object-fit: cover; }
+.catBadge { position: absolute; top: 10px; left: 10px; background: rgba(26,46,26,0.75); color: #fff; border-radius: 6px; padding: 3px 8px; font-size: 10px; font-weight: 700; letter-spacing: 0.06em; backdrop-filter: blur(4px); }
+.outBadge { position: absolute; top: 10px; right: 10px; background: rgba(239,68,68,0.9); color: #fff; border-radius: 6px; padding: 3px 8px; font-size: 10px; font-weight: 700; }
+.cardBody { padding: 14px 16px; }
+.cardTop { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px; }
+.cardName { font-family: 'DM Serif Display', serif; font-size: 16px; color: #1a2e1a; line-height: 1.2; }
+.cardPrice { font-weight: 700; font-size: 16px; color: #1a6b3a; white-space: nowrap; }
+.availRow { display: flex; align-items: center; gap: 6px; margin-bottom: 12px; }
+.availDot { width: 7px; height: 7px; border-radius: 50%; }
+.availGreen { background: #22c55e; }
+.availGrey { background: #9ca3af; }
+.availText { font-size: 11px; font-weight: 700; color: #6b7280; letter-spacing: 0.05em; }
+.cardActions { display: flex; gap: 10px; }
+.editBtn,.deleteBtn { background: none; border: none; font-size: 16px; cursor: pointer; padding: 4px; border-radius: 6px; transition: background 0.15s; }
+.editBtn:hover { background: #e8f5e9; }
+.deleteBtn:hover { background: #fee2e2; }
+
+.addBtn { position: fixed; bottom: 28px; left: 242px; background: #1a6b3a; color: #fff; border: none; border-radius: 30px; padding: 13px 24px; font-size: 14px; font-weight: 700; cursor: pointer; font-family: 'DM Sans', sans-serif; box-shadow: 0 4px 16px rgba(26,107,58,0.35); transition: all 0.2s; z-index: 10; }
+.addBtn:hover { background: #145530; transform: translateY(-2px); }
+
+/* Edit panel */
+.editOverlay { position: fixed; inset: 0; background: rgba(0,0,0,0.3); z-index: 50; display: flex; justify-content: flex-end; }
+.editPanel { width: 380px; background: #fff; height: 100vh; display: flex; flex-direction: column; box-shadow: -4px 0 24px rgba(0,0,0,0.1); overflow-y: auto; }
+.editHead { display: flex; justify-content: space-between; align-items: flex-start; padding: 24px; border-bottom: 1px solid #f3f4f6; }
+.editTitle { font-family: 'DM Serif Display', serif; font-size: 20px; color: #1a2e1a; }
+.editSub { font-size: 12px; color: #9ca3af; margin-top: 2px; }
+.closeBtn { background: none; border: none; font-size: 18px; cursor: pointer; color: #9ca3af; padding: 4px; }
+.editBody { flex: 1; padding: 20px 24px; display: flex; flex-direction: column; gap: 16px; }
+.fieldLabel { font-size: 10px; font-weight: 700; color: #1a6b3a; letter-spacing: 0.08em; }
+.imgPreview { border-radius: 12px; overflow: hidden; height: 160px; }
+.imgPreview img { width: 100%; height: 100%; object-fit: cover; }
+.field { display: flex; flex-direction: column; gap: 6px; }
+.field label { font-size: 10px; font-weight: 700; color: #9ca3af; letter-spacing: 0.08em; }
+.field input,.field select,.field textarea { background: #faf8f4; border: 1px solid #e8ede8; border-radius: 8px; padding: 10px 12px; font-size: 13px; color: #1a2e1a; font-family: 'DM Sans', sans-serif; outline: none; resize: vertical; }
+.field input:focus,.field select:focus,.field textarea:focus { border-color: #1a6b3a; background: #fff; }
+.fieldRow { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.toggleRow { display: flex; justify-content: space-between; align-items: center; background: #faf8f4; border-radius: 10px; padding: 14px; }
+.toggleLabel { font-size: 13px; font-weight: 700; color: #1a2e1a; }
+.toggleSub { font-size: 11px; color: #9ca3af; margin-top: 2px; }
+.toggle { position: relative; display: inline-block; width: 44px; height: 24px; flex-shrink: 0; }
+.toggle input { opacity: 0; width: 0; height: 0; }
+.slider { position: absolute; cursor: pointer; inset: 0; background: #e5e7eb; border-radius: 24px; transition: 0.3s; }
+.slider::before { position: absolute; content: ''; height: 18px; width: 18px; left: 3px; bottom: 3px; background: #fff; border-radius: 50%; transition: 0.3s; }
+.toggle input:checked + .slider { background: #1a6b3a; }
+.toggle input:checked + .slider::before { transform: translateX(20px); }
+.editFoot { display: flex; justify-content: flex-end; gap: 10px; padding: 20px 24px; border-top: 1px solid #f3f4f6; }
+.discardBtn { background: none; border: none; font-size: 14px; font-weight: 600; color: #6b7280; cursor: pointer; padding: 10px 20px; font-family: 'DM Sans', sans-serif; }
+.saveBtn { background: #1a6b3a; color: #fff; border: none; border-radius: 10px; padding: 10px 24px; font-size: 14px; font-weight: 700; cursor: pointer; font-family: 'DM Sans', sans-serif; }
+.saveBtn:hover { background: #145530; }

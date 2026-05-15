@@ -1,0 +1,54 @@
+.page { background: #faf8f4; min-height: 100vh; padding: 28px 32px; }
+.loading { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 60vh; gap: 16px; color: #9ca3af; font-size: 14px; }
+.spinner { width: 32px; height: 32px; border: 3px solid #e8ede8; border-top-color: #1a6b3a; border-radius: 50%; animation: spin 0.7s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.topBar { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 24px; }
+.pageTitle { font-family: 'DM Serif Display', serif; font-size: 24px; color: #1a2e1a; margin-bottom: 2px; }
+.pageSub { font-size: 13px; color: #9ca3af; }
+.statusChip { display: flex; align-items: center; gap: 7px; padding: 8px 14px; border-radius: 30px; font-size: 12px; font-weight: 700; }
+.statusDot { width: 8px; height: 8px; border-radius: 50%; }
+
+.kpiRow { display: grid; grid-template-columns: repeat(4,1fr); gap: 14px; margin-bottom: 14px; }
+.kpiCard { background: #fff; border: 1px solid #e8ede8; border-radius: 14px; padding: 18px; }
+.kpiLabel { font-size: 10px; font-weight: 700; color: #9ca3af; letter-spacing: 0.08em; margin-bottom: 6px; }
+.kpiVal { font-family: 'DM Serif Display', serif; font-size: 28px; color: #1a2e1a; line-height: 1; margin-bottom: 4px; }
+.kpiSub { font-size: 12px; color: #9ca3af; }
+
+.top3Row { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin-bottom: 16px; }
+.top3Card { background: #fff; border: 1px solid #e8ede8; border-radius: 12px; padding: 16px; display: flex; align-items: center; gap: 12px; }
+.top3Rank { color: #fff; font-size: 11px; font-weight: 800; border-radius: 8px; padding: 4px 8px; flex-shrink: 0; }
+.top3Info { flex: 1; min-width: 0; }
+.top3Name { font-weight: 700; font-size: 14px; color: #1a2e1a; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.top3Sub { font-size: 11px; color: #9ca3af; margin-top: 2px; }
+.top3Right { text-align: right; flex-shrink: 0; }
+.top3Orders { font-family: 'DM Serif Display', serif; font-size: 24px; color: #1a6b3a; line-height: 1; }
+.top3Label { font-size: 10px; color: #9ca3af; font-weight: 600; }
+
+.mainGrid { display: grid; grid-template-columns: 3fr 2fr; gap: 14px; margin-bottom: 14px; }
+.card { background: #fff; border: 1px solid #e8ede8; border-radius: 14px; padding: 20px; }
+.cardHead { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 18px; }
+.cardTitle { font-family: 'DM Serif Display', serif; font-size: 16px; color: #1a2e1a; display: flex; align-items: center; gap: 8px; margin-bottom: 2px; }
+.cardSub { font-size: 12px; color: #9ca3af; }
+.slotTag { background: #e8f5e9; color: #1a6b3a; border-radius: 6px; padding: 2px 8px; font-size: 12px; font-weight: 700; font-family: 'DM Sans', sans-serif; }
+.dishSelect { background: #faf8f4; border: 1px solid #e8ede8; border-radius: 8px; padding: 6px 10px; font-size: 12px; font-family: 'DM Sans', sans-serif; color: #374151; outline: none; cursor: pointer; }
+
+.slotChart { display: flex; align-items: flex-end; gap: 3px; height: 130px; padding-bottom: 20px; position: relative; }
+.slotCol { display: flex; flex-direction: column; align-items: center; gap: 3px; flex: 1; cursor: pointer; min-width: 0; }
+.slotVal { font-size: 9px; color: #9ca3af; height: 12px; }
+.slotBar { width: 100%; border-radius: 3px 3px 0 0; transition: all 0.2s; min-height: 4px; }
+.slotCol:hover .slotBar { opacity: 0.8; }
+.slotLabel { white-space: nowrap; overflow: hidden; }
+
+.breakdown { display: flex; flex-direction: column; gap: 10px; max-height: 320px; overflow-y: auto; }
+.breakRow { display: flex; align-items: center; gap: 8px; }
+.breakDish { font-size: 12px; font-weight: 500; color: #374151; min-width: 110px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.breakBar { flex: 1; background: #f3f4f6; border-radius: 4px; height: 8px; overflow: hidden; }
+.breakFill { height: 100%; border-radius: 4px; transition: width 0.5s ease; }
+.breakVal { font-size: 12px; font-weight: 700; color: #1a2e1a; min-width: 22px; text-align: right; }
+.breakConf { font-size: 10px; color: #9ca3af; min-width: 28px; text-align: right; }
+
+.insightBanner { background: #1a2e1a; border-radius: 16px; padding: 28px 36px; }
+.insightTag { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; color: rgba(255,255,255,0.45); display: block; margin-bottom: 8px; }
+.insightTitle { font-family: 'DM Serif Display', serif; font-size: 22px; color: #fff; margin-bottom: 8px; }
+.insightDesc { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.6; max-width: 600px; }
