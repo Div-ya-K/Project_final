@@ -16,27 +16,13 @@ export default function StudentMenu() {
   const [demandMap, setDemandMap] = useState({})
   const [loading,   setLoading]   = useState(true)
 
-  // 🍽️ Fetch menu — backend returns only available=true for students
-  // We also want to show unavailable items greyed-out, so pass { all: true }
-  // and handle the display ourselves. Remove { all: true } if you prefer to
-  // hide unavailable items entirely.
   useEffect(() => {
-    const loadMenu = async () => {
-      try {
-        // Passing all:true so students can see "Unavailable" cards
-        // If you want to hide them completely, change to: fetchMenu()
-        const data = await fetchMenu({ all: true })
-        setMenu(data)
-      } catch (err) {
-        console.error("Menu fetch error:", err)
-      } finally {
-        setLoading(false)
-      }
-    }
-    loadMenu()
+    fetchMenu({ all: true })
+      .then(data => setMenu(Array.isArray(data) ? data : []))
+      .catch(err => console.error('Menu fetch error:', err))
+      .finally(() => setLoading(false))
   }, [])
 
-  // 🤖 Fetch ML demand predictions
   useEffect(() => {
     fetchCurrentPredictions().then(data => {
       if (!data?.predictions) return
@@ -53,18 +39,22 @@ export default function StudentMenu() {
     })
   }, [])
 
-  // 🔍 Filter by search
-  const items = menu.filter(item =>
-    item.name.toLowerCase().includes(search.toLowerCase())
-  )
+  const items = menu
+    .filter(item => item.name.toLowerCase().includes(search.toLowerCase()))
+    .sort((a, b) => {
+      if (a.available === b.available) return 0
+      return a.available ? -1 : 1
+    })
 
-  if (loading) {
-    return (
-      <div className={styles.loading}>
-        <p>Loading menu...</p>
+  if (loading) return (
+    <div className={styles.layout}>
+      <div className={styles.main}>
+        <p style={{ color: 'var(--text-faint)', paddingTop: 60, textAlign: 'center' }}>
+          Loading menu...
+        </p>
       </div>
-    )
-  }
+    </div>
+  )
 
   return (
     <div className={styles.layout}>
@@ -76,7 +66,6 @@ export default function StudentMenu() {
           Browse and order your favourite food from our curated campus kitchen.
         </p>
 
-        {/* SEARCH */}
         <div className={styles.controls}>
           <div className={styles.searchBox}>
             <Icon name="search" size={16} color="var(--text-faint)" />
@@ -88,64 +77,49 @@ export default function StudentMenu() {
           </div>
         </div>
 
-        {/* GRID */}
         <div className={styles.grid}>
           {items.map(item => {
             const demand      = demandMap[item.name]
             const unavailable = !item.available
+            const itemId      = item._id || item.id
 
             return (
               <div
-                key={item._id || item.id}
+                key={itemId}
                 className={`${styles.card} ${unavailable ? styles.cardUnavailable : ''}`}
               >
-                {/* IMAGE */}
-                <div className={styles.cardImg} style={{ position: 'relative' }}>
+                <div className={styles.cardImg}>
                   <img
-                    src={getMenuImage(item.name)} alt={item.name}
+                    src={getMenuImage(item.name)}
+                    alt={item.name}
                     style={{ opacity: unavailable ? 0.45 : 1 }}
                   />
-
-                  {/* UNAVAILABLE OVERLAY BADGE */}
                   {unavailable && (
-                    <span className={styles.unavailBadge}>
-                      Currently Unavailable
-                    </span>
+                    <span className={styles.unavailBadge}>Currently Unavailable</span>
                   )}
-
-                  {/* DEMAND BADGES — only shown for available items */}
                   {!unavailable && demand?.high && (
                     <span className={styles.demandBadge} style={{ background: '#ef4444' }}>
                       🔥 High Demand
                     </span>
                   )}
-                 
                 </div>
 
-                {/* BODY */}
                 <div className={styles.cardBody}>
                   <p className={styles.cardName} style={{ opacity: unavailable ? 0.5 : 1 }}>
                     {item.name}
                   </p>
-
                   {unavailable && (
-                    <p className={styles.unavailHint}>
-                      Check back later
-                    </p>
+                    <p className={styles.unavailHint}>Check back later</p>
                   )}
-
                   <div className={styles.cardFoot}>
                     <span className={styles.price} style={{ opacity: unavailable ? 0.5 : 1 }}>
                       ₹{item.price}
                     </span>
-
-                    {/* Add button disabled when unavailable */}
                     <button
                       className={styles.addBtn}
                       disabled={unavailable}
                       title={unavailable ? 'Item not available' : 'Add to cart'}
-                      style={{ opacity: unavailable ? 0.35 : 1, cursor: unavailable ? 'not-allowed' : 'pointer' }}
-                      onClick={() => !unavailable && addToCart({ ...item, qty: 1 })}
+                      onClick={() => !unavailable && addToCart(item)}
                     >
                       <Icon name="plus" size={14} color="#fff" />
                     </button>
@@ -169,15 +143,25 @@ export default function StudentMenu() {
         </div>
 
         {cart.length === 0 ? (
-          <p>Your cart is empty</p>
+          <p style={{ fontSize: 13, color: 'var(--text-faint)', textAlign: 'center', paddingTop: 40 }}>
+            Your cart is empty
+          </p>
         ) : (
           <>
-            {cart.map(item => (
-              <div key={item._id || item.id} className={styles.cartRow}>
-                <p>{item.name}</p>
-                <p>₹{item.price * item.qty}</p>
-              </div>
-            ))}
+            <div className={styles.cartItems}>
+              {cart.map(item => {
+                const itemId = item._id || item.id
+                return (
+                  <div key={itemId} className={styles.cartRow}>
+                    <div className={styles.cartInfo}>
+                      <p className={styles.cartName}>{item.name}</p>
+                      <p className={styles.cartQty}>{item.qty}× ₹{item.price}</p>
+                    </div>
+                    <p className={styles.cartPrice}>₹{item.price * item.qty}</p>
+                  </div>
+                )
+              })}
+            </div>
 
             <div className={styles.cartTotalRow}>
               <span>Total</span>

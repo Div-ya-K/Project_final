@@ -3,24 +3,24 @@
 .title { font-family:'DM Serif Display',serif; font-size:32px; color:var(--text); margin-bottom:4px; }
 .sub { font-size:13px; color:var(--text-faint); margin-bottom:28px; }
 .layout { display:flex; gap:24px; }
-.sidebar { width:200px; flex-shrink:0; display:flex; flex-direction:column; gap:12px; }
+.sidebar { width:200px; flex-shrink:0; display:flex; flex-direction:column; gap:12px; position:sticky; top:80px; align-self:flex-start; }
 .sideCard { background:#fff; border:1px solid var(--border); border-radius:var(--radius-md); padding:16px; }
 .sideLabel { font-size:10px; font-weight:700; color:var(--text-faint); letter-spacing:.08em; margin-bottom:12px; }
 .sideRow { display:flex; justify-content:space-between; align-items:center; padding:8px 0; border-bottom:1px solid var(--border); font-size:13px; color:var(--text-muted); }
 .activeBadge { background:var(--green); color:#fff; border-radius:20px; padding:1px 8px; font-size:11px; font-weight:700; }
 .mutedNum { font-size:13px; color:var(--text-faint); font-weight:700; }
 .filterGroup { display:flex; flex-wrap:wrap; gap:6px; }
-.filterBtn { background:var(--green-light); color:var(--green); border:1px solid var(--green-border); border-radius:20px; padding:4px 12px; font-size:11px; font-weight:700; cursor:pointer; font-family:'DM Sans',sans-serif; }
+.filterBtn { background:var(--green-light); color:var(--green); border:1px solid var(--green-border); border-radius:20px; padding:4px 12px; font-size:11px; font-weight:700; cursor:pointer; font-family:'DM Sans',sans-serif; transition:background .2s; }
 .filterActive { background:var(--green); color:#fff; border:1px solid var(--green); border-radius:20px; padding:4px 12px; font-size:11px; font-weight:700; cursor:pointer; font-family:'DM Sans',sans-serif; }
-.list { flex:1; display:flex; flex-direction:column; gap:12px; }
+.list { flex:1; display:flex; flex-direction:column; gap:12px; min-width:0; }
 .orderCard { background:#fff; border:1px solid var(--border); border-radius:var(--radius-lg); display:flex; align-items:center; gap:16px; padding:18px; transition:box-shadow .2s; }
 .orderCard:hover { box-shadow:var(--shadow-md); }
 .orderImg { width:90px; height:78px; border-radius:12px; object-fit:cover; flex-shrink:0; }
-.orderInfo { flex:1; }
-.orderMeta { display:flex; align-items:center; gap:8px; margin-bottom:4px; }
+.orderInfo { flex:1; min-width:0; }
+.orderMeta { display:flex; align-items:center; gap:8px; margin-bottom:4px; flex-wrap:wrap; }
 .orderId { font-size:11px; color:var(--text-faint); font-family:monospace; }
 .statusBadge { border-radius:20px; padding:2px 8px; font-size:10px; font-weight:700; }
-.orderName { font-family:'DM Serif Display',serif; font-size:16px; color:var(--text); margin-bottom:2px; }
+.orderName { font-family:'DM Serif Display',serif; font-size:16px; color:var(--text); margin-bottom:2px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
 .orderDesc { font-size:12px; color:var(--text-faint); margin-bottom:10px; }
 .orderActions { display:flex; gap:8px; }
 .reorderBtn { background:var(--green); color:#fff; border:none; border-radius:8px; padding:6px 14px; font-size:12px; font-weight:700; cursor:pointer; font-family:'DM Sans',sans-serif; transition:background .2s; }
@@ -29,3 +29,30 @@
 .orderRight { text-align:right; flex-shrink:0; }
 .orderPrice { font-family:'DM Serif Display',serif; font-size:20px; color:var(--green); font-weight:700; }
 .orderTime { font-size:11px; color:var(--text-faint); margin-top:4px; }
+/* ── Modal ────────────────────────────────────────────────────────────────── */
+.modalOverlay { position:fixed; inset:0; background:rgba(0,0,0,0.35); z-index:100; display:flex; align-items:center; justify-content:center; padding:24px; }
+.modal { background:#fff; border-radius:20px; width:100%; max-width:460px; max-height:85vh; overflow-y:auto; box-shadow:0 20px 60px rgba(0,0,0,0.15); }
+
+.modalHead { display:flex; justify-content:space-between; align-items:flex-start; padding:24px 24px 12px; border-bottom:1px solid var(--border); }
+.modalOrderId { font-family:monospace; font-size:12px; color:var(--text-faint); margin-bottom:6px; }
+.modalStatus { border-radius:20px; padding:3px 10px; font-size:11px; font-weight:700; }
+.modalClose { background:none; border:none; font-size:18px; color:var(--text-faint); cursor:pointer; padding:4px; line-height:1; }
+.modalClose:hover { color:var(--text); }
+
+.modalTime { font-size:12px; color:var(--text-faint); padding:10px 24px 0; }
+
+.modalSection { padding:16px 24px; }
+.modalSectionTitle { font-size:11px; font-weight:700; color:var(--text-faint); letter-spacing:.08em; margin-bottom:12px; }
+
+.modalItem { display:flex; align-items:center; gap:12px; padding:8px 0; border-bottom:1px solid var(--border); }
+.modalItem:last-child { border-bottom:none; }
+.modalItemImg { width:48px; height:48px; border-radius:8px; object-fit:cover; flex-shrink:0; }
+.modalItemInfo { flex:1; min-width:0; }
+.modalItemName { font-size:14px; font-weight:600; color:var(--text); }
+.modalItemQty { font-size:12px; color:var(--text-faint); margin-top:2px; }
+.modalItemPrice { font-size:14px; font-weight:700; color:var(--green); flex-shrink:0; }
+
+.modalBill { margin:0 24px 24px; background:var(--bg); border-radius:12px; padding:16px; }
+.modalBillRow { display:flex; justify-content:space-between; font-size:13px; color:var(--text-muted); margin-bottom:8px; }
+.modalBillTotal { display:flex; justify-content:space-between; font-size:15px; font-weight:700; color:var(--text); border-top:1px solid var(--border); padding-top:10px; margin-top:4px; }
+.modalBillTotal span:last-child { color:var(--green); }
